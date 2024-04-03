@@ -112,8 +112,8 @@ export default class VimIMSwitchPlugin extends Plugin {
 	onVimModeChange = async (cm: any) => {
 		// this.debug_log("Vim Input Method Switch: Vim mode change to : " + cm.mode);
 
+		await this.getFcitxRemoteStatus();
 		if (cm.mode == "normal" || cm.mode == "visual") {
-			await this.getFcitxRemoteStatus();
 			if (this.imStatus == IMStatus.Active) {
 				await this.deactivateIM();
 			}
